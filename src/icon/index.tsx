@@ -14,7 +14,10 @@ import {
     CalendarToday,
     ArrowBackIos,
     ArrowForwardIos,
-    AssignmentInd
+    AssignmentInd,
+    TableChart,
+    ContentPasteSearch,
+    ContentCopy
 } from '@mui/icons-material';
 
 const Icons = {
@@ -34,6 +37,9 @@ const Icons = {
     ArrowBackIos: <ArrowBackIos />,
     ArrowForwardIos: <ArrowForwardIos />,
     AssignmentInd: <AssignmentInd />,
+    TableChart: <TableChart />,
+    ContentPasteSearch: <ContentPasteSearch />,
+    ContentCopy: <ContentCopy />,
 };
 
 export default Icons;

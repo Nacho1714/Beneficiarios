@@ -7,6 +7,7 @@ import { AppProvider } from "./context/mui/AppContext";
 import { SnackbarProvider } from './context/snackbar/SnackbarContext';
 import { ToolbarProvider } from "./context/toolbar/ToolbarContext";
 import { LocalizationProvider } from "@mui/x-date-pickers";
+import { DrawerProvider } from "./context/drawer/DrawerContext";
 
 export default function App() {
 
@@ -14,9 +15,11 @@ export default function App() {
         <AppProvider>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <ToolbarProvider>
-                    <SnackbarProvider>
-                        <Outlet />
-                    </SnackbarProvider>
+                    <DrawerProvider>
+                        <SnackbarProvider>
+                            <Outlet />
+                        </SnackbarProvider>
+                    </DrawerProvider>
                 </ToolbarProvider>
             </LocalizationProvider>
         </AppProvider>

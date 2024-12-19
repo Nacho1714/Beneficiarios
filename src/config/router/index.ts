@@ -1,45 +1,48 @@
 import { Navigation } from "@toolpad/core";
 
-// page
-import Inicio from "../../page/inicio/Inicio"
-import Acrecimientos from "../../page/acrecimientos/Acrecimientos"
-import Aportes from "../../page/aportes/Aportes";
-import Auditoria from "../../page/auditoria/Auditoria";
-import BienesDeUso from "../../page/bienesdeuso/BienesDeUso";
-import Bonos from "../../page/bonos/Bonos"
-import Censo from "../../page/censo/Censo"
-import Cintas from "../../page/cintas/Cintas"
-import Complementarias from "../../page/complementarias/Complementarias"
-import Computo from "../../page/computo/Computo"
-import Certificados from "../../page/certificados/Certificados"
-import Embargos from "../../page/embargos/Embargos"
-import EmbargosCrjppf from "../../page/embargoscrjppf/EmbargosCrjppf"
-import Escalafones from "../../page/escalafones/Escalafones"
-import Expedientes from "../../page/expedientes/Expedientes"
-import Ganancias from "../../page/ganancias/Ganancias"
-import HConsulta from "../../page/hconsulta/HConsulta"
-import Honorarios from "../../page/honorarios/Honorarios"
-import Impagos from "../../page/impagos/Impagos"
-import InformacionPasivos from "../../page/informacionpasivos/InformacionPasivos"
-import InformacionesSumarias from "../../page/informacionessumarias/InformacionesSumarias"
-import Juridicos from "../../page/juridicos/Juridicos"
-import Liquidaciones from "../../page/liquidaciones/Liquidaciones"
-import Listados from "../../page/listados/Listados"
-import Mensual from "../../page/mensual/Mensual"
-import NotasInternas from "../../page/notasinternas/NotasInternas"
-import PagosMensuales from "../../page/pagosmensuales/PagosMensuales"
-import Pasividades from "../../page/pasividades/Pasividades"
-import PlanillaANSES from "../../page/Planilladeanses/PlanillaANSES"
-import Poderes from "../../page/poderes/Poderes"
-import Postal from "../../page/postal/Postal"
-import Reajustes from "../../page/reajustes/Reajustes"
-import Renaper from "../../page/renaper/Renaper"
-import SalarioFamiliar from "../../page/salariofamiliar/SalarioFamiliar"
-import Stock from "../../page/stock/Stock"
-import Supervivencia from "../../page/supervivencia/Supervivencia"
-import SupervivenciaExterior from "../../page/supervivenciaexterior/SupervivenciaExterior"
-import Tesoreria from "../../page/tesoreria/Tesoreria"
-import VencimientoExterior from "../../page/vencimientoexterior/VencimientoExterior"
+// Pages/beneficiarios
+import Inicio from "../../page/beneficiarios/inicio/Inicio"
+import Acrecimientos from "../../page/beneficiarios/acrecimientos/Acrecimientos"
+import Aportes from "../../page/beneficiarios/aportes/Aportes";
+import Auditoria from "../../page/beneficiarios/auditoria/Auditoria";
+import BienesDeUso from "../../page/beneficiarios/bienesdeuso/BienesDeUso";
+import Bonos from "../../page/beneficiarios/bonos/Bonos"
+import Censo from "../../page/beneficiarios/censo/Censo"
+import Cintas from "../../page/beneficiarios/cintas/Cintas"
+import Complementarias from "../../page/beneficiarios/complementarias/Complementarias"
+import Computo from "../../page/beneficiarios/computo/Computo"
+import Certificados from "../../page/beneficiarios/certificados/Certificados"
+import Embargos from "../../page/beneficiarios/embargos/Embargos"
+import EmbargosCrjppf from "../../page/beneficiarios/embargoscrjppf/EmbargosCrjppf"
+import Escalafones from "../../page/beneficiarios/escalafones/Escalafones"
+import Expedientes from "../../page/beneficiarios/expedientes/Expedientes"
+import Ganancias from "../../page/beneficiarios/ganancias/Ganancias"
+import HConsulta from "../../page/beneficiarios/hconsulta/HConsulta"
+import Honorarios from "../../page/beneficiarios/honorarios/Honorarios"
+import Impagos from "../../page/beneficiarios/impagos/Impagos"
+import InformacionPasivos from "../../page/beneficiarios/informacionpasivos/InformacionPasivos"
+import InformacionesSumarias from "../../page/beneficiarios/informacionessumarias/InformacionesSumarias"
+import Juridicos from "../../page/beneficiarios/juridicos/Juridicos"
+import Liquidaciones from "../../page/beneficiarios/liquidaciones/Liquidaciones"
+import Listados from "../../page/beneficiarios/listados/Listados"
+import Mensual from "../../page/beneficiarios/mensual/Mensual"
+import NotasInternas from "../../page/beneficiarios/notasinternas/NotasInternas"
+import PagosMensuales from "../../page/beneficiarios/pagosmensuales/PagosMensuales"
+import Pasividades from "../../page/beneficiarios/pasividades/Pasividades"
+import PlanillaANSES from "../../page/beneficiarios/Planilladeanses/PlanillaANSES"
+import Poderes from "../../page/beneficiarios/poderes/Poderes"
+import Postal from "../../page/beneficiarios/postal/Postal"
+import Reajustes from "../../page/beneficiarios/reajustes/Reajustes"
+import Renaper from "../../page/beneficiarios/renaper/Renaper"
+import SalarioFamiliar from "../../page/beneficiarios/salariofamiliar/SalarioFamiliar"
+import Stock from "../../page/beneficiarios/stock/Stock"
+import Supervivencia from "../../page/beneficiarios/supervivencia/Supervivencia"
+import SupervivenciaExterior from "../../page/beneficiarios/supervivenciaexterior/SupervivenciaExterior"
+import Tesoreria from "../../page/beneficiarios/tesoreria/Tesoreria"
+import VencimientoExterior from "../../page/beneficiarios/vencimientoexterior/VencimientoExterior"
+
+// Pages/utilidades
+import Queries from "../../page/utilidades/queries/Queries";
 
 // Toolbar
 // import { ToolbarNames } from "../../layout/toolbar/toolbarTypes";
@@ -57,7 +60,6 @@ export const whiteList = [
         component: Inicio,
         loader: null,
     },
-    
     {
         title: 'Beneficiarios',
         path: '/beneficiarios',
@@ -366,6 +368,44 @@ export const whiteList = [
                 path: '/vencimientoexterior',
                 segment: 'vencimientoexterior',
                 component: VencimientoExterior,
+                loader: null,
+                toolbarType: null
+            },
+        ],
+        loader: null,
+        toolbarType: null
+    },
+    {
+        title: 'Tablas',
+        path: '/tablas',
+        segment: 'tablas',
+        component: null,
+        icon: Icons.TableChart,
+        children: [
+            {
+                title: 'Acrecimientos',
+                path: '/acrecimientos',
+                segment: 'acrecimientos',
+                component: Acrecimientos,
+                loader: null,
+                toolbarType: null
+            },
+        ],
+        loader: null,
+        toolbarType: null
+    },
+    {
+        title: 'Utilidades',
+        path: '/utilidades',
+        segment: 'utilidades',
+        component: null,
+        icon: Icons.ContentPasteSearch,
+        children: [
+            {
+                title: 'Queries',
+                path: '/queries',
+                segment: 'queries',
+                component: Queries,
                 loader: null,
                 toolbarType: null
             },
