@@ -17,7 +17,9 @@ import {
     AssignmentInd,
     TableChart,
     ContentPasteSearch,
-    ContentCopy
+    ContentCopy,
+    Help,
+    AccountCircle
 } from '@mui/icons-material';
 
 const Icons = {
@@ -40,6 +42,8 @@ const Icons = {
     TableChart: <TableChart />,
     ContentPasteSearch: <ContentPasteSearch />,
     ContentCopy: <ContentCopy />,
+    Help: <Help />,
+    AccountCircle: <AccountCircle />,
 };
 
 export default Icons;

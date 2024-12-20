@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../context/auth/AuthContext';
+import { SignInPage } from '@toolpad/core';
 
 /* service */
 import { useAuthLogin } from '../../service/auth/custom-hooks';
@@ -12,7 +13,6 @@ import Grid from '@mui/material/Grid';
 
 // Image
 import backgroundImage from '../../../public/assets/backgroundImage.jpg'
-import { SignInPage } from '@toolpad/core';
 
 export default function Login() {
     const { login } = useAuthContext();

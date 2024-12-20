@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import CustomDrawer from "../../../component/drawer/CustomDrawer";
 
 // Custom Hook
 import { useDrawer } from "../../../context/drawer/DrawerContext";
@@ -14,18 +13,15 @@ import { Typography } from "@mui/material";
 import QueryAuthorization from "./sections/QueryAuthorization";
 
 const Queries = () => {
-    const { setDrawerContent } = useDrawer();
+    const { setDrawerItems, clearDrawer } = useDrawer();
 
     useEffect(() => {
-        setDrawerContent(
-            <CustomDrawer items={[
-                { id: 'QueryAuthorization', name: 'Autorización' },
-            ]} 
-            />
-        );
+        setDrawerItems([
+            { id: 'QueryAuthorization', name: 'Autorización' }
+        ]);
 
-        return () => setDrawerContent(null)
-    }, [setDrawerContent]);
+        return clearDrawer
+    }, []);
 
     return (
 

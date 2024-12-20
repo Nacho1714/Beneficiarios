@@ -1,6 +1,8 @@
 import React from 'react';
 import { Box, Typography, Divider, TableCell, TableRow, TableContainer, Table, TableBody, Paper } from '@mui/material';
 import CodeBlock from '../../../../component/codeBlock/codeBlock';
+import CreditsTag from '../../../../component/credit/Credits';
+import { CONTRIBUTORS } from '../../../../interface/contributor';
 
 const QueryAuthorization: React.FC = () => {
     const queryCode = `UPDATE autoriz
@@ -19,9 +21,17 @@ WHERE usuario = "baig";`;
             <Typography variant="h4" gutterBottom>
                 Modificar el acceso a todas las opciones del sistema
             </Typography>
+            
             <Typography variant="body1" gutterBottom>
                 Esta query permite modificar los permisos de acceso para todas las opciones del sistema de manera rápida y uniforme.
             </Typography>
+
+            
+            <CreditsTag
+                contributorName={CONTRIBUTORS.BARROS_IGNACIO}
+                contributionDetail="Aportó la explicación sobre useState."
+            />
+
             <Divider sx={{ my: 2 }} />
             <Typography variant="h6" gutterBottom>
                 Código SQL
@@ -88,6 +98,7 @@ WHERE usuario = "baig";`;
                     </Table>
                 </TableContainer>
             </Box>
+
         </Box>
     );
 };

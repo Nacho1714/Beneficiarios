@@ -7,8 +7,17 @@ import { NAVIGATION } from "../../config/router";
 import { useAuthContext } from "../auth/AuthContext";
 import { useThemeContext } from "../theme/ThemeContext";
 
+// Image
+import logo from '../../../public/assets/logo-caja.png'
+
 const BRANDING = {
     title: 'Documentación CRJPPF',
+    logo: (
+        <img
+            src={logo} 
+            alt="Escudo Caja de Retiros, Jubilaciones y Pensiones de la Policía Federal" 
+        />
+    )
 };
 
 // Provider

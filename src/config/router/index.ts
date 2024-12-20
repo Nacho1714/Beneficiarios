@@ -40,6 +40,8 @@ import Supervivencia from "../../page/beneficiarios/supervivencia/Supervivencia"
 import SupervivenciaExterior from "../../page/beneficiarios/supervivenciaexterior/SupervivenciaExterior"
 import Tesoreria from "../../page/beneficiarios/tesoreria/Tesoreria"
 import VencimientoExterior from "../../page/beneficiarios/vencimientoexterior/VencimientoExterior"
+import Dgo from "../../page/beneficiarios/dgo/Dgo"
+import Preguntas from "../../page/preguntas/Preguntas";
 
 // Pages/utilidades
 import Queries from "../../page/utilidades/queries/Queries";
@@ -371,6 +373,14 @@ export const whiteList = [
                 loader: null,
                 toolbarType: null
             },
+            {
+                title: 'DGO',
+                path: '/dgo',
+                segment: 'dgo',
+                component: Dgo,
+                loader: null,
+                toolbarType: null
+            },
         ],
         loader: null,
         toolbarType: null
@@ -410,6 +420,15 @@ export const whiteList = [
                 toolbarType: null
             },
         ],
+        loader: null,
+        toolbarType: null
+    },
+    {
+        title: 'Preguntas',
+        path: '/preguntas',
+        segment: 'preguntas',
+        component: Preguntas,
+        icon: Icons.Help,
         loader: null,
         toolbarType: null
     },
