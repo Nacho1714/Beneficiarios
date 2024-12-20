@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import CustomDrawer from "./sections/CustomDrawer";
+import CustomDrawer from "../../../component/drawer/CustomDrawer";
 
 // Custom Hook
 import { useDrawer } from "../../../context/drawer/DrawerContext";

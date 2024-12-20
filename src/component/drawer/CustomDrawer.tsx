@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo } from 'react';
 import { List, ListItemButton, ListItemText, styled } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
-import { DrawerItem } from '../../../../interface/drawer';
+import { DrawerItem } from '../../interface/drawer';
 
 const StyledListItemText = styled(ListItemText)(({ theme }) => ({
     '& .MuiTypography-root': {
