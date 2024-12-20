@@ -1,15 +1,16 @@
-import React from 'react';
-import { List, ListItemButton, ListItemText, Collapse } from '@mui/material';
-import { ExpandLess, ExpandMore } from '@mui/icons-material';
-import { styled } from '@mui/system';
-import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect, useMemo } from 'react';
+import { List, ListItemButton, ListItemText, styled } from '@mui/material';
+import { Link, useLocation } from 'react-router-dom';
+import { DrawerItem } from '../../../../interface/drawer';
 
 const StyledListItemText = styled(ListItemText)(({ theme }) => ({
     '& .MuiTypography-root': {
         fontSize: '0.875rem', // Tamaño de fuente
         fontWeight: 400,
-        color: '#e0e0e0', // Color del texto
+        // color: '#e0e0e0',
+    },
+    '&:hover': {
+        backgroundColor: theme.palette.action.hover,
     },
 }));
 
@@ -18,88 +19,50 @@ const StyledSelectedItem = styled('div')(({ theme }) => ({
     paddingLeft: theme.spacing(2),
 }));
 
-interface DrawerItem {
-    id: string; // ID único para navegación
-    name: string; // Nombre visible del ítem
-    subItems?: DrawerItem[]; // Subítems anidados
-}
+export default function CustomDrawer({ items }: { items: DrawerItem[] }) {
 
-export const generateDrawerContent = (items: DrawerItem[]) => {
-    const DrawerContent: React.FC = () => {
-        const [open, setOpen] = useState<string | null>(null); // Controla qué menú está abierto
-        const location = useLocation();
-        const navigate = useNavigate();
+    const location = useLocation();
 
-        const handleToggle = (id: string) => {
-            setOpen((prev) => (prev === id ? null : id)); // Alterna el submenú activo
-        };
-
-        const handleNavigation = (id: string) => {
-            // Cambia la URL
-            navigate(`#${id}`);
-
-            // Desplaza a la sección
-            const element = document.getElementById(id);
+    // Efecto para desplazarse al hash actual al cargar la página o cambiar el hash
+    useEffect(() => {
+        if (location.hash) {
+            const element = document.getElementById(location.hash.slice(1)); // Elimina el '#' del hash
             if (element) {
                 element.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
-        };
+        }
+    }, [location.hash]);
 
-        return (
-            <List>
-                {items.map((item) => {
-                    const isSelected = location.hash === `#${item.id}`;
+    // Función para renderizar un ítem (y sus subitems si los tiene)
+    const renderDrawerItems = (drawerItems: DrawerItem[], parentId: string | null = null) => {
+        return drawerItems.map((item) => {
+            const isSelected = location.hash === `#${item.id}`;
+            const hasSubItems = item.subItems && item.subItems.length > 0;
 
-                    return (
-                        <React.Fragment key={item.id}>
-                            {/* Ítem Principal */}
-                            <ListItemButton
-                                onClick={() =>
-                                    item.subItems ? handleToggle(item.id) : handleNavigation(item.id)
-                                }
-                            >
-                                {isSelected ? (
-                                    <StyledSelectedItem>
-                                        <StyledListItemText primary={item.name} />
-                                    </StyledSelectedItem>
-                                ) : (
-                                    <StyledListItemText primary={item.name} />
-                                )}
-                                {item.subItems && (open === item.id ? <ExpandLess /> : <ExpandMore />)}
-                            </ListItemButton>
+            return (
+                <React.Fragment key={item.id}>
+                    <ListItemButton
+                        component={Link}
+                        to={`#${item.id}`}
+                        sx={parentId ? { pl: 4 } : undefined} // Sangría para subitems
+                    >
+                        {isSelected ? (
+                            <StyledSelectedItem>
+                                <StyledListItemText primary={item.name} />
+                            </StyledSelectedItem>
+                        ) : (
+                            <StyledListItemText primary={item.name} />
+                        )}
+                    </ListItemButton>
 
-                            {/* Submenú Expandible */}
-                            {item.subItems && (
-                                <Collapse in={open === item.id} timeout="auto" unmountOnExit>
-                                    <List component="div" disablePadding>
-                                        {item.subItems.map((subItem) => {
-                                            const isSubSelected = location.hash === `#${subItem.id}`;
-
-                                            return (
-                                                <ListItemButton
-                                                    key={subItem.id}
-                                                    onClick={() => handleNavigation(subItem.id)}
-                                                    sx={{ pl: 4 }}
-                                                >
-                                                    {isSubSelected ? (
-                                                        <StyledSelectedItem>
-                                                            <StyledListItemText primary={subItem.name} />
-                                                        </StyledSelectedItem>
-                                                    ) : (
-                                                        <StyledListItemText primary={subItem.name} />
-                                                    )}
-                                                </ListItemButton>
-                                            );
-                                        })}
-                                    </List>
-                                </Collapse>
-                            )}
-                        </React.Fragment>
-                    );
-                })}
-            </List>
-        );
+                    {hasSubItems && <List component="div">{renderDrawerItems(item.subItems!, item.id)}</List>}
+                </React.Fragment>
+            );
+        });
     };
 
-    return <DrawerContent />;
+    // Memorizar los ítems renderizados para optimizar el rendimiento
+    const renderedItems = useMemo(() => renderDrawerItems(items), [items, location.hash]);
+
+    return <List>{renderedItems}</List>;
 };

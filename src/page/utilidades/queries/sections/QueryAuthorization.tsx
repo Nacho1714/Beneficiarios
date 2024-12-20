@@ -15,7 +15,7 @@ SET activo       = "S",
 WHERE usuario = "baig";`;
 
     return (
-        <Box sx={{ padding: 4 }}>
+        <Box sx={{ padding: 4 }} id="QueryAuthorization">
             <Typography variant="h4" gutterBottom>
                 Modificar el acceso a todas las opciones del sistema
             </Typography>

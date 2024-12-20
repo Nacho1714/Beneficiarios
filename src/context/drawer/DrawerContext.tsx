@@ -1,24 +1,22 @@
-// contexts/DrawerContext.tsx
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 interface DrawerContextProps {
-    isOpen: boolean;
-    toggleDrawer: (open: boolean) => void;
     setDrawerContent: (content: ReactNode) => void;
     drawerContent: ReactNode;
+    isDrawerVisible: boolean;
 }
 
 const DrawerContext = createContext<DrawerContextProps | undefined>(undefined);
 
 export const DrawerProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [isOpen, setIsOpen] = useState(false);
     const [drawerContent, setDrawerContent] = useState<ReactNode>(null);
 
-    const toggleDrawer = (open: boolean) => setIsOpen(open);
+    // Calculamos visibilidad del Drawer
+    const isDrawerVisible = !!drawerContent;
 
     return (
         <DrawerContext.Provider
-            value={{ isOpen, toggleDrawer, setDrawerContent, drawerContent }}
+            value={{ setDrawerContent, drawerContent, isDrawerVisible }}
         >
             {children}
         </DrawerContext.Provider>
