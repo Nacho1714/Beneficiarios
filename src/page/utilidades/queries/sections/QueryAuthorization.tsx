@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Divider, TableCell, TableRow, TableContainer, Table, TableBody, Paper } from '@mui/material';
+import { Box, Typography, Divider, TableCell, TableRow, TableContainer, Table, TableBody, Paper, Stack } from '@mui/material';
 import CodeBlock from '../../../../component/codeBlock/codeBlock';
 import CreditsTag from '../../../../component/credit/Credits';
 import { CONTRIBUTORS } from '../../../../interface/contributor';
@@ -10,10 +10,7 @@ SET activo       = "S",
     alta         = "S",
     modificacion = "S",
     baja         = "S",
-    consulta     = "S",
-    miscelanea   = "S",
-    miscelanea2  = "S",
-    protegido    = "S"
+    consulta     = "S"
 WHERE usuario = "baig";`;
 
     return (
@@ -26,11 +23,16 @@ WHERE usuario = "baig";`;
                 Esta query permite modificar los permisos de acceso para todas las opciones del sistema de manera rápida y uniforme.
             </Typography>
 
-            
-            <CreditsTag
-                contributorName={CONTRIBUTORS.BARROS_IGNACIO}
-                contributionDetail="Aportó la explicación sobre useState."
-            />
+            <Stack spacing={2} direction={"row"}>
+                <CreditsTag
+                    contributorName={CONTRIBUTORS.BARROS_IGNACIO}
+                    contributionDetail="Aportó la explicación de esta sección."
+                />
+                <CreditsTag
+                    contributorName={CONTRIBUTORS.CIPRES_YAIR}
+                    contributionDetail="Aportó la explicación de esta sección."
+                />
+            </Stack>
 
             <Divider sx={{ my: 2 }} />
             <Typography variant="h6" gutterBottom>
@@ -55,30 +57,6 @@ WHERE usuario = "baig";`;
                                 <TableCell>
                                     <Typography variant="body2">
                                         Opciones principales que controlan los accesos a distintas funcionalidades del sistema.
-                                    </Typography>
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>
-                                    <Typography variant="body2">
-                                        <strong>miscelanea, miscelanea2:</strong>
-                                    </Typography>
-                                </TableCell>
-                                <TableCell>
-                                    <Typography variant="body2">
-                                        Campos adicionales que pueden representar permisos personalizados.
-                                    </Typography>
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>
-                                    <Typography variant="body2">
-                                        <strong>protegido:</strong>
-                                    </Typography>
-                                </TableCell>
-                                <TableCell>
-                                    <Typography variant="body2">
-                                        Indica si el acceso a esta opción está protegido contra modificaciones externas.
                                     </Typography>
                                 </TableCell>
                             </TableRow>
