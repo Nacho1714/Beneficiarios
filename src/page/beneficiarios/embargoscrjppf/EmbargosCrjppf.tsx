@@ -1,5 +1,6 @@
-export default function EmbargosCrjppf() { 
-      return (
-        <>EmbargosCrjppf</> 
-      );
+export default function EmbargosCrjppf() {
+
+    return (
+        <>EmbargosCrjppf</>
+    );
 }

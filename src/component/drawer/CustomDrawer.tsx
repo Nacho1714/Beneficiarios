@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo } from 'react';
-import { List, ListItemButton, ListItemText, styled } from '@mui/material';
+import { Chip, List, ListItemButton, ListItemText, styled, Tooltip } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
 import { DrawerItem } from '../../interface/drawer';
 
@@ -17,7 +17,9 @@ const StyledListItemText = styled(ListItemText)(({ theme }) => ({
 const StyledSelectedItem = styled('div')(({ theme }) => ({
     borderLeft: `3px solid ${theme.palette.primary.main}`, // Indicador azul
     paddingLeft: theme.spacing(2),
+    flex: 1
 }));
+
 
 export default function CustomDrawer({ items }: { items: DrawerItem[] }) {
 
@@ -52,6 +54,20 @@ export default function CustomDrawer({ items }: { items: DrawerItem[] }) {
                             </StyledSelectedItem>
                         ) : (
                             <StyledListItemText primary={item.name} />
+                        )}
+                        {item.label && (
+                            <Tooltip title={item.label}>
+                                <Chip
+                                    label={item.label.charAt(0).toUpperCase()}
+                                    size="small"
+                                    variant="outlined"
+                                    color={
+                                        item.label === "deprecated" ?
+                                        "warning" : "default"
+                                    }
+                                    sx={{ fontSize: '0.75rem', height: '20px', borderRadius: '4px', padding: '0 4px' }}
+                                />
+                            </Tooltip>
                         )}
                     </ListItemButton>
 

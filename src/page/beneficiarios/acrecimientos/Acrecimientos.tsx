@@ -1,65 +1,37 @@
-import { Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar } from "@mui/material";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import { useEffect } from "react";
+import { useDrawer } from "../../../context/drawer/DrawerContext";
 
 export default function Acrecimientos() {
 
-    const drawerWidth = 240;
+    const { setDrawerItems, clearDrawer } = useDrawer();
+
+    useEffect(() => {
+        setDrawerItems([
+            { id: 'altaAcrecimiento', name: 'Alta', label: "draft" },
+            { id: 'modificacionAcrecimiento', name: 'Modificación', label: "draft" },
+            { id: 'consultaAcrecimiento', name: 'Consulta', label: 'draft', subItems: [
+                { id: 'beneficioAcreciemiento', name: 'Beneficio', label: "draft" },
+                { id: 'historicoAcrecimiento', name: 'Historico', label: "draft" },
+                { id: 'ultNumAcrecimiento', name: 'Ult.num.', label: "draft" },
+            ]},
+            { id: 'reconstruccionAcrecimiento', name: 'Reconstrucción', label: "draft" },
+            { id: 'vencimientoAcrecimiento', name: 'Vencimiento', label: 'draft', subItems: [
+                { id: 'certEstudiosAcrecimiento', name: 'Certificado de estudios', label: "draft" },
+                { id: 'mayorHijasAcrecimiento', name: 'Mayor - Hijas', label: "draft" },
+                { id: 'mayorHijosAcrecimiento', name: 'Mayor - Hijos', label: "draft" },
+                { id: 'estudioAcrecimiento', name: 'Estudio', label: "draft" },
+                { id: 'soltSPFAcrecimiento', name: 'Soltera y no convive (SPF)', label: "draft" },
+                { id: 'mayor18SPFAcrecimiento', name: 'Mayor 18 años (SPF)', label: "draft" },
+                { id: 'acta2262Acrecimiento', name: 'Acta 2262', label: "draft" },
+            ]},
+            { id: 'consBenefReconsAcrecimiento', name: 'Cons-benef-recons', label: "draft" },
+        ]);
+
+        return clearDrawer
+
+    }, []);
 
     return (
-        <>
-            <Drawer
-                sx={{
-                    width: drawerWidth,
-                    flexShrink: 0,
-                    "& .MuiDrawer-paper": {
-                        width: drawerWidth,
-                        boxSizing: "border-box",
-                    },
-                }}
-                variant="permanent"
-                anchor="right"
-            >
-                <Toolbar />
-                <Divider />
-
-                <List>
-                    {["Inbox", "Starred", "Send email", "Drafts"].map(
-                        (text, index) => (
-                            <ListItem key={text} disablePadding>
-                                <ListItemButton>
-                                    <ListItemIcon>
-                                        {index % 2 === 0 ? (
-                                            <InboxIcon />
-                                        ) : (
-                                            <MailIcon />
-                                        )}
-                                    </ListItemIcon>
-                                    <ListItemText primary={text} />
-                                </ListItemButton>
-                            </ListItem>
-                        )
-                    )}
-                </List>
-                <Divider />
-                <List>
-                    {["All mail", "Trash", "Spam"].map((text, index) => (
-                        <ListItem key={text} disablePadding>
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    {index % 2 === 0 ? (
-                                        <InboxIcon />
-                                    ) : (
-                                        <MailIcon />
-                                    )}
-                                </ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
-
-            </Drawer>
-        </>
+        <>Acrecimientos</>
     )
 }
