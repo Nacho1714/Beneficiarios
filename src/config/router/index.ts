@@ -51,6 +51,7 @@ import Queries from "../../page/utilidades/queries/Queries";
 import { ToolbarNames } from "../../layout/toolbar/toolbarTypes";
 
 import Icons from "../../icon";
+import tesorer_comple from "../../page/tablas/tesorer_comple";
 
 export const whiteList = [
     {
@@ -393,10 +394,10 @@ export const whiteList = [
         icon: Icons.TableChart,
         children: [
             {
-                title: 'Acrecimientos',
-                path: '/acrecimientos',
-                segment: 'acrecimientos',
-                component: Acrecimientos,
+                title: 'tesorer_comple',
+                path: '/tesorer_comple',
+                segment: 'tesorer_comple',
+                component: tesorer_comple,
                 loader: null,
                 toolbarType: null
             },
