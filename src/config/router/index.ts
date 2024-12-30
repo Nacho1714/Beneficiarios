@@ -39,6 +39,7 @@ import Stock from "../../page/beneficiarios/stock/Stock"
 import Supervivencia from "../../page/beneficiarios/supervivencia/Supervivencia"
 import SupervivenciaExterior from "../../page/beneficiarios/supervivenciaexterior/SupervivenciaExterior"
 import Tesoreria from "../../page/beneficiarios/tesoreria/Tesoreria"
+import Transaccional from "../../page/beneficiarios/transaccional/Transaccional";
 import VencimientoExterior from "../../page/beneficiarios/vencimientoexterior/VencimientoExterior"
 import Dgo from "../../page/beneficiarios/dgo/Dgo"
 import Preguntas from "../../page/preguntas/Preguntas";
@@ -363,6 +364,14 @@ export const whiteList = [
                 path: '/tesoreria',
                 segment: 'tesoreria',
                 component: Tesoreria,
+                loader: null,
+                toolbarType: null
+            },
+            {
+                title: 'Transaccional',
+                path: '/transaccional',
+                segment: 'transaccional',
+                component: Transaccional,
                 loader: null,
                 toolbarType: null
             },
